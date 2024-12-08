@@ -30,20 +30,25 @@ Ensure you have the following installed on your system:
    cd <repository-folder>
 
 2. Install dependencies:
+    ```bash
     npm install
     or
     yarn install
 
 3. Set up environment variables: Create a .env file in the project root with the following content:
+    ```bash
     DATABASE_URL=postgresql://<username>:<password>@localhost:5432/<database_name>
 
 4. Initialize Prisma:
+    ```bash
     npx prisma init
 
 5. Generate Prisma Client:
+    ```bash
     npx prisma generate
 
 6. Apply database migrations:
+    ```bash
     npx prisma migrate dev --name init
 
 
