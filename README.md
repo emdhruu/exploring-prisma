@@ -31,7 +31,7 @@ Ensure you have the following installed on your system:
 
 2. Install dependencies:
     npm install
-    # or
+    or
     yarn install
 
 3. Set up environment variables: Create a .env file in the project root with the following content:
