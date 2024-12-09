@@ -19,8 +19,36 @@ enum Role {
   CUSTOMER
 }
 
-model User{
-  id Int @id @default(autoincrement())
-  username String @unique
-  role Role
+model User {
+  id             String  @id @default(uuid())
+  username       String  @unique
+  role           Role
+  email          String
+  isAdmin        Boolean
+  writtenPosts   Post[]  @relation("writtenPost")
+  favoritesPosts Post[]  @relation("favoritePost")
+}
+
+// model UserPreference {
+//   id           String  @id @default(uuid())
+//   emailUpdates Boolean
+//   userPreference Json
+//   user  
+// }
+
+model Post {
+  id          String    @id @default(uuid())
+  rating      Float
+  createdAt   DateTime
+  updatedAt   DateTime
+  author      User      @relation("writtenPost", fields: [authorId], references: [id])
+  authorId    String
+  favoritedBy User      @relation("favoritePost", fields: [favoritedId], references: [id])
+  favoritedId String
+  category Category[]
+}
+
+model Category {
+  id   String @id @default(uuid())
+  post Post[]
 }
